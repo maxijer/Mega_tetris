@@ -3,7 +3,7 @@ import os
 
 pygame.init()
 
-width, height = (300, 300)
+width, height = (700, 700)
 size = width, height
 # screen — холст, на котором нужно рисовать:
 screen = pygame.display.set_mode(size)
@@ -17,8 +17,8 @@ class Board:
         self.height = height
         self.board = [[0] * width for _ in range(height)]
         # значения по умолчанию
-        self.left = 0
-        self.top = 0
+        self.left = 50
+        self.top = 90
         self.cell_size = 30
 
     # настройка внешнего вида
@@ -43,6 +43,10 @@ class Board:
                 celi_x < 0 or celi_x >= self.width or celi_y < 0 or celi_y >= self.height):
             return celi_y, celi_x
 
+
+board = Board(20, 20)
+
+
 def load_image(name, colorkey=None):
     fullname = os.path.join('data', name)
     image = pygame.image.load(fullname)
@@ -55,16 +59,45 @@ def load_image(name, colorkey=None):
         image = image.convert_alpha()
     return image
 
-board = Board(10, 10)
+
+class T:
+    def __init__(self):
+        global board
+        self.chast = list()
+        self.x = 0
+        self.y = 0
+
+    def create_shape(self):
+        z = load_image('tetris.png', -1)
+        first_coord = (210, self.y + 18)
+        screen.blit(z, (210, self.y + 18))
+        self.add_in_board(first_coord)
+        second_coord = (210, self.y + 48)
+        screen.blit(z, second_coord)
+        self.add_in_board(second_coord)
+        three_cord = (210, self.y + 78)
+        screen.blit(z, three_cord)
+        self.add_in_board(three_cord)
+        four_coord = (240, self.y + 48)
+        screen.blit(z, (240, self.y + 48))
+        self.add_in_board(four_coord)
+
+    def add_in_board(self, coord):
+        f = board.get_cell((coord[0], coord[1]))
+        board.board[f[0]][f[1]] = 1
+
 
 running = True
+f = T()
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
     screen.fill((0, 0, 0))
-    clock.tick(1)
+    f.y += 30
+    clock.tick(2)
+    f.create_shape()
     board.render()
     pygame.display.flip()
 pygame.display.flip()
