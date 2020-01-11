@@ -59,7 +59,8 @@ class T:
         self.chast = list()
         self.x = 210
         self.y = 0
-        self.func = ['second', 'create_shape']
+        self.glav = 'create_shape'
+        self.func = ['create_shape', 'second', 'three']
         self.flag = True
 
     def create_shape(self):
@@ -115,6 +116,28 @@ class T:
             self.add_in_board(three)
             self.add_in_board(four)
 
+    def three(self):
+        z = load_image('tetris.png', -1)
+        first_coord = (self.x, self.y + 48)
+        fir = self.check_coord(first_coord)
+        screen.blit(z, first_coord)
+        second_coord = (self.x - 30, self.y + 48)
+        sec = self.check_coord(second_coord)
+        screen.blit(z, second_coord)
+        three_cord = (self.x + 30, self.y + 48)
+        three = self.check_coord(three_cord)
+        screen.blit(z, three_cord)
+        four_coord = (self.x, self.y + 14)
+        four = self.check_coord(four_coord)
+        screen.blit(z, four_coord)
+        if four[0] == 19 or board.board[four[1]][four[0] + 1] == 1 or board.board[four[0]] == 0 and \
+                board.board[four[0] + 1] == 1:
+            self.add_in_board(fir)
+            self.add_in_board(sec)
+            self.flag = False
+            self.add_in_board(three)
+            self.add_in_board(four)
+
 
 running = True
 f = T()
@@ -132,8 +155,13 @@ while running:
             elif event.key == pygame.K_DOWN:
                 f.y += 30
             elif event.key == pygame.K_SPACE:
-                z = f.func[0]
-                q = f'f.{z}()'
+                z = f.func.index(f.glav)
+                if z == len(f.func) - 1:
+                    z = 0
+                    f.glav = f.func[0]
+                else:
+                    f.glav = f.func[z + 1]
+                q = f'f.{f.func[z + 1]}()'
     if f.flag:
         screen.fill((0, 0, 0))
         f.y += 30
