@@ -29,12 +29,22 @@ class Board:
         self.top = top
         self.cell_size = cell_size
 
+    def render(self):
+        for y in range(self.height):
+            for x in range(self.width):
+                pygame.draw.rect(screen, pygame.Color('white'),
+                                 (x * self.cell_size + self.left,
+                                  y * self.cell_size + self.top,
+                                  self.cell_size, self.cell_size),
+                                 1)
+
     def get_cell(self, mouse_pos):
         celi_x = mouse_pos[0] // self.cell_size
         celi_y = mouse_pos[1] // self.cell_size
         if not (
                 celi_x < 0 or celi_x >= self.width or celi_y < 0 or celi_y >= self.height):
             return celi_y, celi_x
+
 
 
 board = Board(20, 20)
@@ -62,16 +72,19 @@ class T:
         self.glav = 'create_shape'
         self.func = ['create_shape', 'second', 'three', 'four']
         self.flag = True
+        self.krai_left = (7, 1)
+        self.krai_right = (7, 2)
+        self.krai_down = (7, 3)
 
     def create_shape(self):
         first_coord = (self.x, self.y + 48)
         second_coord = (self.x, self.y + 78)
         three_cord = (self.x, self.y + 108)
         four_coord = (self.x + 30, self.y + 78)
-        self.master_shape(first_coord, second_coord, three_cord, four_coord)
+        self.master_shape(first_coord, second_coord, three_cord, four_coord, 1)
 
     def master_shape(self, first_coord, second_coord, three_coord,
-                     four_coord):  # оптимизация и расстановка фигур
+                     four_coord, shape):  # оптимизация и расстановка фигур
         z = load_image('tetris.png', -1)
         fir = self.check_coord(first_coord)
         sec = self.check_coord(second_coord)
@@ -81,13 +94,36 @@ class T:
         screen.blit(z, second_coord)
         screen.blit(z, three_coord)
         screen.blit(z, four_coord)
-        if three[0] == 19 or board.board[three[1]][three[0] + 1] == 1 or board.board[four[0]] == 0 and \
-                board.board[four[0] + 1] == 1:
+        if shape == 1:
+            if three[0] == 19:
+                self.flag = False
+                self.add_in_board(fir)
+                self.add_in_board(sec)
+                self.add_in_board(three)
+                self.add_in_board(four)
+            else:
+                self.krai_left = fir
+                self.krai_right = fir
+                self.krai_down = three
+
+        elif shape == 2:
+            self.krai_left = sec
+            self.krai_right = three
+            self.krai_down = four
             self.add_in_board(fir)
             self.add_in_board(sec)
             self.flag = False
             self.add_in_board(three)
             self.add_in_board(four)
+
+        elif shape == 3:
+            self.krai_left = four
+            self.krai_right = fir
+            self.krai_down = three
+        elif shape == 4:
+            self.krai_left = sec
+            self.krai_right = three
+            self.krai_down = fir
 
     def check_coord(self, coord):
         f = board.get_cell((coord[0], coord[1]))
@@ -102,22 +138,21 @@ class T:
         second_coord = (self.x - 30, self.y + 48)
         three_cord = (self.x + 30, self.y + 48)
         four_coord = (self.x, self.y + 78)
-        self.master_shape(first_coord, second_coord, three_cord, four_coord)
+        self.master_shape(first_coord, second_coord, three_cord, four_coord, 2)
+
+    def three(self):
+        first_coord = (self.x, self.y + 48)
+        second_coord = (self.x, self.y + 78)
+        three_cord = (self.x, self.y + 108)
+        four_coord = (self.x - 30, self.y + 78)
+        self.master_shape(first_coord, second_coord, three_cord, four_coord, 3)
 
     def four(self):
         first_coord = (self.x, self.y + 48)
         second_coord = (self.x - 30, self.y + 48)
         three_cord = (self.x + 30, self.y + 48)
         four_coord = (self.x, self.y + 14)
-        self.master_shape(first_coord, second_coord, three_cord, four_coord)
-
-    def three(self):
-        z = load_image('tetris.png', -1)
-        first_coord = (self.x, self.y + 48)
-        second_coord = (self.x, self.y + 78)
-        three_cord = (self.x, self.y + 108)
-        four_coord = (self.x - 30, self.y + 78)
-        self.master_shape(first_coord, second_coord, three_cord, four_coord)
+        self.master_shape(first_coord, second_coord, three_cord, four_coord, 4)
 
 
 running = True
@@ -130,11 +165,14 @@ while running:
             running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
-                f.x += 30
+                if f.x + 30 < 570:
+                    f.x += 30
             elif event.key == pygame.K_LEFT:
-                f.x -= 30
+                if f.krai_left[0] > 3:
+                    f.x -= 30
             elif event.key == pygame.K_DOWN:
-                f.y += 30
+                if f.krai_down[0] != 18:
+                    f.y += 30
             elif event.key == pygame.K_SPACE:
                 z = f.func.index(f.glav)
                 if z == len(f.func) - 1:
@@ -148,5 +186,6 @@ while running:
         f.y += 30
         exec(q)
         clock.tick(2)
+        board.render()
         pygame.display.flip()
     pygame.display.flip()
