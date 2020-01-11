@@ -95,7 +95,8 @@ class T:
         screen.blit(z, four_coord)
         if shape == 1:
             if three[0] <= 19:
-                if three[0] == 19 or board.board[three[0] + 1][three[1]] != '0':
+                if three[0] == 19 or board.board[three[0] + 1][three[1]] != '0' or \
+                        board.board[four[0] + 1][four[1]] != '0':
                     print(board.board[three[1] + 1])
                     self.flag = False
                     self.add_in_board(fir, first_coord)
