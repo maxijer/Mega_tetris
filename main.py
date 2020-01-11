@@ -94,16 +94,18 @@ class T:
         screen.blit(z, three_coord)
         screen.blit(z, four_coord)
         if shape == 1:
-            if three[0] == 19:
-                self.flag = False
-                self.add_in_board(fir)
-                self.add_in_board(sec)
-                self.add_in_board(three)
-                self.add_in_board(four)
-            else:
-                self.krai_left = fir
-                self.krai_right = fir
-                self.krai_down = three
+            if three[0] <= 19:
+                if three[0] == 19 or board.board[three[0] + 1][three[1]] != '0':
+                    print(board.board[three[1] + 1])
+                    self.flag = False
+                    self.add_in_board(fir, first_coord)
+                    self.add_in_board(sec, second_coord)
+                    self.add_in_board(three, three_coord)
+                    self.add_in_board(four, four_coord)
+                else:
+                    self.krai_left = fir
+                    self.krai_right = fir
+                    self.krai_down = three
 
         elif shape == 2:
             self.krai_left = sec
@@ -128,8 +130,8 @@ class T:
         f = board.get_cell((coord[0], coord[1]))
         return f
 
-    def add_in_board(self, coord):
-        board.board[coord[0]][coord[1]] = (1, 'blue')
+    def add_in_board(self, coord, vse):
+        board.board[coord[0]][coord[1]] = (vse, 'blue')
         print(board.board)
 
     def second(self):
@@ -171,7 +173,7 @@ while running:
                 if f.x > 80:
                     f.x -= 30
             elif event.key == pygame.K_DOWN:
-                if f.krai_down[0] != 18:
+                if f.y + 30 < 450:
                     f.y += 30
             elif event.key == pygame.K_SPACE:
                 z = f.func.index(f.glav)
@@ -190,13 +192,13 @@ while running:
                 if len(board.board[i][j]) == 2:
                     if board.board[i][j][1] == 'blue':
                         image = load_image('tetris.png', -1)
-                        r = j * 30
-                        per = i * 31
+                        r = board.board[i][j][0][0]
+                        per = board.board[i][j][0][1]
                         screen.blit(image, (r, per))
+
         f.y += 30
         exec(q)
         clock.tick(2)
-        board.render()
         pygame.display.flip()
     else:
         go_flag = True
