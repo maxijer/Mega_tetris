@@ -17,7 +17,7 @@ class Board:
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.board = [[0] * width for _ in range(height)]
+        self.board = [['0'] * width for _ in range(height)]
         # значения по умолчанию
         self.left = 50
         self.top = 90
@@ -44,7 +44,6 @@ class Board:
         if not (
                 celi_x < 0 or celi_x >= self.width or celi_y < 0 or celi_y >= self.height):
             return celi_y, celi_x
-
 
 
 board = Board(20, 20)
@@ -158,6 +157,7 @@ class T:
 running = True
 f = T()
 glav = ''
+go_flag = False
 q = 'f.create_shape()'
 while running:
     for event in pygame.event.get():
@@ -168,24 +168,39 @@ while running:
                 if f.x + 30 < 570:
                     f.x += 30
             elif event.key == pygame.K_LEFT:
-                if f.krai_left[0] > 3:
+                if f.x > 80:
                     f.x -= 30
             elif event.key == pygame.K_DOWN:
                 if f.krai_down[0] != 18:
                     f.y += 30
             elif event.key == pygame.K_SPACE:
                 z = f.func.index(f.glav)
-                if z == len(f.func) - 1:
-                    z = -1
-                    f.glav = f.func[0]
-                else:
-                    f.glav = f.func[z + 1]
-                q = f'f.{f.func[z + 1]}()'
+                if f.y != 30:
+                    if z == len(f.func) - 1:
+                        z = -1
+                        f.glav = f.func[0]
+                    else:
+                        f.glav = f.func[z + 1]
+                    q = f'f.{f.func[z + 1]}()'
+
     if f.flag:
         screen.fill((0, 0, 0))
+        for j in range(len(board.board)):
+            for i in range(len(board.board[j])):
+                if len(board.board[i][j]) == 2:
+                    if board.board[i][j][1] == 'blue':
+                        image = load_image('tetris.png', -1)
+                        r = j * 30
+                        per = i * 31
+                        screen.blit(image, (r, per))
         f.y += 30
         exec(q)
         clock.tick(2)
         board.render()
         pygame.display.flip()
+    else:
+        go_flag = True
+    if go_flag:
+        f = T()
+        go_flag = False
     pygame.display.flip()
