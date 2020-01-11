@@ -3,6 +3,8 @@ import os
 
 pygame.init()
 
+pygame.joystick.init()
+
 width, height = (700, 700)
 size = width, height
 # screen — холст, на котором нужно рисовать:
@@ -57,6 +59,7 @@ class T:
         self.chast = list()
         self.x = 210
         self.y = 0
+        self.func = ['second', 'create_shape']
         self.flag = True
 
     def create_shape(self):
@@ -115,6 +118,8 @@ class T:
 
 running = True
 f = T()
+glav = ''
+q = 'f.create_shape()'
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -126,10 +131,13 @@ while running:
                 f.x -= 30
             elif event.key == pygame.K_DOWN:
                 f.y += 30
+            elif event.key == pygame.K_SPACE:
+                z = f.func[0]
+                q = f'f.{z}()'
     if f.flag:
         screen.fill((0, 0, 0))
-        f.second()
         f.y += 30
+        exec(q)
         clock.tick(2)
         pygame.display.flip()
     pygame.display.flip()
