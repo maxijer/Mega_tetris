@@ -174,11 +174,11 @@ while running:
             running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
-                if f.x + 60 < 570 and (len(board.board[f.check_coord((f.x + 30, f.y + 108 + 30))[0]][
-                                               f.check_coord((f.x + 30, f.y + 138))[
+                if f.x + 60 < 570 and (len(board.board[f.check_coord((f.x + 60, f.y + 108))[0]][
+                                               f.check_coord((f.x + 60, f.y + 108))[
                                                    1]]) == 1 and len(
-                    board.board[f.check_coord((f.x + 60, f.y + 60))[0]][
-                        f.check_coord((f.x + 60, f.y + 60))[
+                    board.board[f.check_coord((f.x + 30, f.y + 60))[0]][
+                        f.check_coord((f.x + 30, f.y + 60))[
                             1]]) == 1):
                     f.x += 30
             elif event.key == pygame.K_LEFT:
