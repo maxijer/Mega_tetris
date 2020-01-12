@@ -115,9 +115,13 @@ class T:
                 self.no_problen(fir, first_coord, sec, second_coord, three, three_coord, four,
                                 four_coord)
         elif shape == 4:
-            self.krai_left = sec
-            self.krai_right = three
-            self.krai_down = fir
+            if sec[0] == 19 or board.board[sec[0] + 1][sec[1]] != '0' or board.board[three[0] + 1][
+                three[1]] != '0' or board.board[fir[0] + 1][fir[1]] != '0':
+                self.no_problen(
+                    fir, first_coord, sec, second_coord, three, three_coord, four, four_coord)
+                self.krai_left = sec
+                self.krai_right = three
+                self.krai_down = fir
 
     def no_problen(self, fir, first_coord, sec, second_coord, three, three_coord, four,
                    four_coord):  # добавление на доску , сокращение copy paste
@@ -152,7 +156,7 @@ class T:
         first_coord = (self.x, self.y + 48)
         second_coord = (self.x - 30, self.y + 48)
         three_cord = (self.x + 30, self.y + 48)
-        four_coord = (self.x, self.y + 14)
+        four_coord = (self.x, self.y + 18)
         self.master_shape(first_coord, second_coord, three_cord, four_coord, 4)
 
     def first_check_position(self):
