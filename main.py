@@ -97,32 +97,35 @@ class T:
             if three[0] <= 19:
                 if three[0] == 19 or board.board[three[0] + 1][three[1]] != '0' or \
                         board.board[four[0] + 1][four[1]] != '0':
-                    self.flag = False
-                    self.add_in_board(fir, first_coord)
-                    self.add_in_board(sec, second_coord)
-                    self.add_in_board(three, three_coord)
-                    self.add_in_board(four, four_coord)
+                    self.no_problen(fir, first_coord, sec, second_coord, three, three_coord, four,
+                                    four_coord)
 
         elif shape == 2:
             self.krai_left = sec
             self.krai_right = three
             self.krai_down = four
             if four[0] == 19 or board.board[three[0] + 1][three[1]] != '0' or board.board[
-                sec[0] + 1][sec[1]] != '0'or board.board[four[0] + 1][four[1]] != '0':
-                self.add_in_board(fir, first_coord)
-                self.add_in_board(sec, second_coord)
-                self.flag = False
-                self.add_in_board(three, three_coord)
-                self.add_in_board(four, four_coord)
+                sec[0] + 1][sec[1]] != '0' or board.board[four[0] + 1][four[1]] != '0':
+                self.no_problen(fir, first_coord, sec, second_coord, three, three_coord, four,
+                                four_coord)
 
         elif shape == 3:
-            self.krai_left = four
-            self.krai_right = fir
-            self.krai_down = three
+            if three[0] == 19 or board.board[four[0] + 1][four[1]] != '0' or board.board[three[0] + 1][
+                three[1]] != '0':
+                self.no_problen(fir, first_coord, sec, second_coord, three, three_coord, four,
+                                four_coord)
         elif shape == 4:
             self.krai_left = sec
             self.krai_right = three
             self.krai_down = fir
+
+    def no_problen(self, fir, first_coord, sec, second_coord, three, three_coord, four,
+                   four_coord):  # добавление на доску , сокращение copy paste
+        self.add_in_board(fir, first_coord)
+        self.add_in_board(sec, second_coord)
+        self.flag = False
+        self.add_in_board(three, three_coord)
+        self.add_in_board(four, four_coord)
 
     def check_coord(self, coord):
         f = board.get_cell((coord[0], coord[1]))
