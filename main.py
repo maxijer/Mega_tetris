@@ -1,5 +1,6 @@
 import pygame
 import os
+import random
 
 pygame.init()
 
@@ -71,6 +72,12 @@ class O:
         self.glav = 'create_shape'
         self.func = ['create_shape']
         self.flag = True
+        color = random.choice(['red', 'blue'])
+        self.color = color
+        if color == 'red':
+            self.z = load_image('red.png', -1)
+        else:
+            self.z = load_image('tetris.png', -1)
 
     def create_shape(self):
         first_coord = (self.x, self.y + 48)
@@ -81,19 +88,18 @@ class O:
 
     def master_shape(self, first_coord, second_coord, three_coord,
                      four_coord, shape):  # оптимизация и расстановка фигур
-        z = load_image('red.png', -1)
         fir = self.check_coord(first_coord)
         sec = self.check_coord(second_coord)
         three = self.check_coord(three_coord)
         four = self.check_coord(four_coord)
-        screen.blit(z, first_coord)
-        screen.blit(z, second_coord)
-        screen.blit(z, three_coord)
-        screen.blit(z, four_coord)
+        screen.blit(self.z, first_coord)
+        screen.blit(self.z, second_coord)
+        screen.blit(self.z, three_coord)
+        screen.blit(self.z, four_coord)
         if shape == 1:
-            if three[0] <= 19:
-                if three[0] == 19 or board.board[three[0] + 1][three[1]] != '0' or \
-                        board.board[four[0] + 1][four[1]] != '0':
+            if sec[0] <= 19:
+                if sec[0] == 19 or board.board[sec[0] + 1][sec[1]] != '0' or \
+                        board.board[four[0] + 1][four[1]] != '0' or board.board[four[0] + 1][four[1]]:
                     self.no_problen(fir, first_coord, sec, second_coord, three, three_coord, four,
                                     four_coord)
 
@@ -110,7 +116,7 @@ class O:
         return f
 
     def add_in_board(self, coord, vse):
-        board.board[coord[0]][coord[1]] = (vse, 'blue')
+        board.board[coord[0]][coord[1]] = (vse, self.color)
 
     def game(self, position):
         global q
@@ -155,6 +161,12 @@ class T:
         self.glav = 'create_shape'
         self.func = ['create_shape', 'second', 'three', 'four']
         self.flag = True
+        color = random.choice(['red', 'blue'])
+        self.color = color
+        if color == 'red':
+            self.z = load_image('red.png', -1)
+        else:
+            self.z = load_image('tetris.png', -1)
 
     def create_shape(self):
         first_coord = (self.x, self.y + 48)
@@ -165,15 +177,14 @@ class T:
 
     def master_shape(self, first_coord, second_coord, three_coord,
                      four_coord, shape):  # оптимизация и расстановка фигур
-        z = load_image('tetris.png', -1)
         fir = self.check_coord(first_coord)
         sec = self.check_coord(second_coord)
         three = self.check_coord(three_coord)
         four = self.check_coord(four_coord)
-        screen.blit(z, first_coord)
-        screen.blit(z, second_coord)
-        screen.blit(z, three_coord)
-        screen.blit(z, four_coord)
+        screen.blit(self.z, first_coord)
+        screen.blit(self.z, second_coord)
+        screen.blit(self.z, three_coord)
+        screen.blit(self.z, four_coord)
         if shape == 1:
             if three[0] <= 19:
                 if three[0] == 19 or board.board[three[0] + 1][three[1]] != '0' or \
@@ -217,7 +228,7 @@ class T:
         return f
 
     def add_in_board(self, coord, vse):
-        board.board[coord[0]][coord[1]] = (vse, 'blue')
+        board.board[coord[0]][coord[1]] = (vse, self.color)
 
     def second(self):
         first_coord = (self.x, self.y + 48)
@@ -278,48 +289,82 @@ class T:
                     if f.y + 30 < 480 and len(
                             board.board[f.check_coord((f.x, f.y + 108 + 30))[0] + 1][
                                 f.check_coord((f.x, f.y + 108 + 30))[1]]) == 1 and len(board.board[
-                        f.check_coord((f.x + 30, f.y + 138))[0] + 1][
-                        f.check_coord((f.x + 30, f.y + 138))[1]]) == 1:
+                                                                                           f.check_coord(
+                                                                                               (
+                                                                                                       f.x + 30,
+                                                                                                       f.y + 138))[
+                                                                                               0] + 1][
+                                                                                           f.check_coord(
+                                                                                               (
+                                                                                                       f.x + 30,
+                                                                                                       f.y + 138))[
+                                                                                               1]]) == 1:
                         f.y += 30
                 elif event.key == pygame.K_SPACE:
                     z = self.func.index(f.glav)
                     if f.check_coord((f.x, f.y))[1] > 2:
-                        game1 = z + 1
+                        if z == len(f.func) - 1:
+                            z = -1
+                            f.glav = f.func[0]
+                        else:
+                            game1 += 1
+                            f.glav = f.func[z + 1]
+                        q = f'f.{f.func[z + 1]}()'
+        elif position == 2:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT: # готово
+                    if f.x + 60 <= 570 and (
+                            len(board.board[f.check_coord((f.x + 60, f.y + 108))[0]][
+                                    f.check_coord((f.x + 60, f.y + 108))[
+                                        1]]) == 1):
+                        f.x += 30
+                elif event.key == pygame.K_LEFT:  # левая есть
+                    if f.x - 60 > 40 and f.y < 460 and (
+                            len(board.board[f.check_coord((f.x - 60, f.y + 108))[0] + 1][
+                                    f.check_coord((f.x - 60, f.y + 108))[
+                                        1]]) == 1 and f.y < 430 and (len(
+                        board.board[
+                            f.check_coord((f.x - 30, f.y + 78))[0] + 1][
+                            f.check_coord((f.x - 30, f.y + 78))[
+                                1] + 1]) == 1) and len(
+                        board.board[f.check_coord((f.x, f.y + 60))[0] + 1][
+                            f.check_coord((f.x, f.y + 60))[1]])):
+                        f.x -= 30
+                        print(board.board)
+                elif event.key == pygame.K_DOWN: #готов
+                    if f.y + 30 < 480 and len(
+                            board.board[f.check_coord((f.x, f.y + 108 + 30))[0] + 1][
+                                f.check_coord((f.x, f.y + 108 + 30))[1]]) == 1 and len(board.board[
+                                                                                           f.check_coord(
+                                                                                               (
+                                                                                                       f.x - 30,
+                                                                                                       f.y + 138))[
+                                                                                               0] + 1][
+                                                                                           f.check_coord(
+                                                                                               (
+                                                                                                       f.x - 30,
+                                                                                                       f.y + 138))[
+                                                                                               1]]) == 1 and  and len(board.board[
+                                                                                           f.check_coord(
+                                                                                               (
+                                                                                                       f.x + 30,
+                                                                                                       f.y + 138))[
+                                                                                               0] + 1][
+                                                                                           f.check_coord(
+                                                                                               (
+                                                                                                       f.x + 30,
+                                                                                                       f.y + 138))[
+                                                                                               1]]) == 1:
+                        f.y += 30
+                elif event.key == pygame.K_SPACE:
+                    z = self.func.index(f.glav)
+                    if f.check_coord((f.x, f.y))[1] > 2:
                         if z == len(f.func) - 1:
                             z = -1
                             f.glav = f.func[0]
                         else:
                             f.glav = f.func[z + 1]
                         q = f'f.{f.func[z + 1]}()'
-        elif position == 2:
-            if f.x + 60 <= 570 and (len(board.board[f.check_coord((f.x + 60, f.y + 78))[0]][
-                                            f.check_coord((f.x + 60, f.y + 78))[
-                                                1]]) != 1):
-                f.x += 30
-            elif event.key == pygame.K_LEFT:
-                if f.x - 60 > 10 and (len(board.board[f.check_coord((f.x - 60, f.y + 108))[0] + 1][
-                                              f.check_coord((f.x - 60, f.y + 108))[
-                                                  1]]) == 1 and f.y < 430 and (len(
-                    board.board[
-                        f.check_coord((f.x - 30, f.y + 138))[0] + 1][
-                        f.check_coord((f.x - 30, f.y + 138))[
-                            1] + 1]) == 1)):
-                    f.x -= 30
-            elif event.key == pygame.K_DOWN:
-                if f.y + 30 < 480 and len(
-                        board.board[f.check_coord((f.x, f.y + 108 + 30))[0] + 1][
-                            f.check_coord((f.x, f.y + 108 + 30))[1]]) == 1:
-                    f.y += 30
-            elif event.key == pygame.K_SPACE:
-                z = self.func.index(f.glav)
-                if f.check_coord((f.x, f.y))[1] > 2:
-                    game1 = z
-                    if z == len(f.func) - 1:
-                        z = -1
-                        f.glav = f.func[0]
-                    else:
-                        f.glav = f.func[z + 1]
-                    q = f'f.{f.func[z + 1]}()'
 
     def first_check_position(self):
         if f.x + 60 < 570:
@@ -339,6 +384,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        print(game1)
         f.game(game1)
 
     if f.flag:
@@ -348,6 +394,11 @@ while running:
                 if len(board.board[i][j]) == 2:
                     if board.board[i][j][1] == 'blue':
                         image = load_image('tetris.png', -1)
+                        r = board.board[i][j][0][0]
+                        per = board.board[i][j][0][1]
+                        screen.blit(image, (r, per))
+                    elif board.board[i][j][1] == 'red':
+                        image = load_image('red.png', -1)
                         r = board.board[i][j][0][0]
                         per = board.board[i][j][0][1]
                         screen.blit(image, (r, per))
