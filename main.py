@@ -164,13 +164,17 @@ class T:
             if event.type == pygame.KEYDOWN:
                 print(board.board)
                 if event.key == pygame.K_RIGHT:
-                    if f.x + 60 < 570 and f.y + 138 < 500 and (len(board.board[f.check_coord((f.x + 30, f.y))[0] + 1][
-                                                   f.check_coord((f.x + 30, f.y))[
-                                                       1]]) == 1 and
-                                           (len(
-                    board.board[f.check_coord((f.x + 30, f.y + 138))[0] + 1][
-                    f.check_coord((f.x + 30, f.y + 138))[
-                    1] + 1]) == 1)):
+                    if f.x + 60 < 570 and (len(board.board[f.check_coord((f.x + 30, f.y + 30))[0] + 1][
+                                                   f.check_coord((f.x + 30, f.y + 30))[
+                                                       1]]) == 1 and f.y < 430 and (len(
+                        board.board[
+                            f.check_coord((f.x + 30, f.y + 138))[0] + 1][
+                            f.check_coord((f.x + 30, f.y + 138))[
+                                1] + 1]) == 1 and len(
+                        board.board[f.check_coord((f.x + 30, f.y + 30))[0] + 1][
+                            f.check_coord((f.x + 30, f.y + 30))[1]])) and len(board.board[f.check_coord((f.x + 60, f.y))[0] + 1][
+                                                   f.check_coord((f.x + 60, f.y))[
+                                                       1]]) == 1):
                         print(f.check_coord((f.x + 60, f.y + 180)))
                         print(board.board)
                         f.x += 30
