@@ -62,6 +62,90 @@ def load_image(name, colorkey=None):
     return image
 
 
+class O:
+    def __init__(self):
+        global board
+        self.chast = list()
+        self.x = 210
+        self.y = 0
+        self.glav = 'create_shape'
+        self.func = ['create_shape']
+        self.flag = True
+
+    def create_shape(self):
+        first_coord = (self.x, self.y + 48)
+        second_coord = (self.x, self.y + 78)
+        three_cord = (self.x + 30, self.y + 48)
+        four_coord = (self.x + 30, self.y + 78)
+        self.master_shape(first_coord, second_coord, three_cord, four_coord, 1)
+
+    def master_shape(self, first_coord, second_coord, three_coord,
+                     four_coord, shape):  # оптимизация и расстановка фигур
+        z = load_image('red.png', -1)
+        fir = self.check_coord(first_coord)
+        sec = self.check_coord(second_coord)
+        three = self.check_coord(three_coord)
+        four = self.check_coord(four_coord)
+        screen.blit(z, first_coord)
+        screen.blit(z, second_coord)
+        screen.blit(z, three_coord)
+        screen.blit(z, four_coord)
+        if shape == 1:
+            if three[0] <= 19:
+                if three[0] == 19 or board.board[three[0] + 1][three[1]] != '0' or \
+                        board.board[four[0] + 1][four[1]] != '0':
+                    self.no_problen(fir, first_coord, sec, second_coord, three, three_coord, four,
+                                    four_coord)
+
+    def no_problen(self, fir, first_coord, sec, second_coord, three, three_coord, four,
+                   four_coord):  # добавление на доску , сокращение copy paste
+        self.add_in_board(fir, first_coord)
+        self.add_in_board(sec, second_coord)
+        self.flag = False
+        self.add_in_board(three, three_coord)
+        self.add_in_board(four, four_coord)
+
+    def check_coord(self, coord):
+        f = board.get_cell((coord[0], coord[1]))
+        return f
+
+    def add_in_board(self, coord, vse):
+        board.board[coord[0]][coord[1]] = (vse, 'blue')
+
+    def game(self, position):
+        global q
+        if position == 1:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    if f.x + 60 <= 570 and (len(board.board[f.check_coord((f.x + 30, f.y + 30))[0] + 1][
+                                                    f.check_coord((f.x + 30, f.y + 30))[
+                                                        1]]) == 1 and f.y < 430 and (len(
+                        board.board[
+                            f.check_coord((f.x + 30, f.y + 138))[0] + 1][
+                            f.check_coord((f.x + 30, f.y + 138))[
+                                1] + 1]) == 1 and len(
+                        board.board[f.check_coord((f.x + 30, f.y + 30))[0] + 1][
+                            f.check_coord((f.x + 30, f.y + 30))[1]])) and len(
+                        board.board[f.check_coord((f.x + 60, f.y))[0] + 1][
+                            f.check_coord((f.x + 60, f.y))[
+                                1]]) == 1):
+                        f.x += 30
+                elif event.key == pygame.K_LEFT:
+                    if f.x - 60 > 10 and (len(board.board[f.check_coord((f.x - 60, f.y + 108))[0] + 1][
+                                                  f.check_coord((f.x - 60, f.y + 108))[
+                                                      1]]) == 1 and f.y < 430 and (len(
+                        board.board[
+                            f.check_coord((f.x - 30, f.y + 138))[0] + 1][
+                            f.check_coord((f.x - 30, f.y + 138))[
+                                1] + 1]) == 1)):
+                        f.x -= 30
+                elif event.key == pygame.K_DOWN:
+                    if f.y + 30 < 480 and len(
+                            board.board[f.check_coord((f.x, f.y + 108 + 30))[0] + 1][
+                                f.check_coord((f.x, f.y + 108 + 30))[1]]) == 1:
+                        f.y += 30
+
+
 class T:
     def __init__(self):
         global board
@@ -71,9 +155,6 @@ class T:
         self.glav = 'create_shape'
         self.func = ['create_shape', 'second', 'three', 'four']
         self.flag = True
-        self.krai_left = (7, 1)
-        self.krai_right = (7, 2)
-        self.krai_down = (7, 3)
 
     def create_shape(self):
         first_coord = (self.x, self.y + 48)
@@ -166,36 +247,44 @@ class T:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
                     if f.x + 60 <= 570 and (len(board.board[f.check_coord((f.x + 30, f.y + 30))[0] + 1][
-                                                   f.check_coord((f.x + 30, f.y + 30))[
-                                                       1]]) == 1 and f.y < 430 and (len(
+                                                    f.check_coord((f.x + 30, f.y + 30))[
+                                                        1]]) == 1 and f.y < 430 and (len(
                         board.board[
-                            f.check_coord((f.x + 30, f.y + 138))[0] + 1][
+                            f.check_coord((f.x + 30, f.y + 138))[0]][
                             f.check_coord((f.x + 30, f.y + 138))[
-                                1] + 1]) == 1 and len(
+                                1]]) == 1 and len(
                         board.board[f.check_coord((f.x + 30, f.y + 30))[0] + 1][
                             f.check_coord((f.x + 30, f.y + 30))[1]])) and len(
                         board.board[f.check_coord((f.x + 60, f.y))[0] + 1][
                             f.check_coord((f.x + 60, f.y))[
-                                1]]) == 1):
+                                1]]) == 1 and len(board.board[f.check_coord((f.x + 60, f.y + 138))[0]][
+                                                      f.check_coord((f.x + 60, f.y + 138))[1]]) == 1):
                         f.x += 30
                 elif event.key == pygame.K_LEFT:
-                    if f.x - 60 > 10 and (len(board.board[f.check_coord((f.x - 60, f.y + 108))[0] + 1][
-                                                   f.check_coord((f.x - 60, f.y + 108))[
-                                                       1]]) == 1 and f.y < 430 and (len(
-                        board.board[
-                            f.check_coord((f.x - 30, f.y + 138))[0] + 1][
-                            f.check_coord((f.x - 30, f.y + 138))[
-                                1] + 1]) == 1)):
+                    if f.x - 60 > 10 and (f.y < 430 and (len(
+                            board.board[
+                                f.check_coord((f.x - 30, f.y + 138))[0] + 1][
+                                f.check_coord((f.x - 30, f.y + 138))[
+                                    1] + 1]) == 1) and
+                                          board.board[f.check_coord((f.x - 30, f.y))[0] + 1][
+                                              f.check_coord((f.x - 30, f.y))[1]] and
+                                          board.board[f.check_coord((f.x - 30, f.y + 48))[0] + 1][
+                                              f.check_coord((f.x - 30, f.y + 48))[1]] and len(
+                                board.board[f.check_coord((f.x - 30, f.y + 78))[0] + 1][
+                                    f.check_coord((f.x - 60, f.y + 108))[
+                                        1]]) == 1):
                         f.x -= 30
                 elif event.key == pygame.K_DOWN:
                     if f.y + 30 < 480 and len(
                             board.board[f.check_coord((f.x, f.y + 108 + 30))[0] + 1][
-                                f.check_coord((f.x, f.y + 108 + 30))[1]]) == 1:
+                                f.check_coord((f.x, f.y + 108 + 30))[1]]) == 1 and len(board.board[
+                        f.check_coord((f.x + 30, f.y + 138))[0] + 1][
+                        f.check_coord((f.x + 30, f.y + 138))[1]]) == 1:
                         f.y += 30
                 elif event.key == pygame.K_SPACE:
                     z = self.func.index(f.glav)
                     if f.check_coord((f.x, f.y))[1] > 2:
-                        game1 = z
+                        game1 = z + 1
                         if z == len(f.func) - 1:
                             z = -1
                             f.glav = f.func[0]
@@ -203,8 +292,34 @@ class T:
                             f.glav = f.func[z + 1]
                         q = f'f.{f.func[z + 1]}()'
         elif position == 2:
-            pass
-
+            if f.x + 60 <= 570 and (len(board.board[f.check_coord((f.x + 60, f.y + 78))[0]][
+                                            f.check_coord((f.x + 60, f.y + 78))[
+                                                1]]) != 1):
+                f.x += 30
+            elif event.key == pygame.K_LEFT:
+                if f.x - 60 > 10 and (len(board.board[f.check_coord((f.x - 60, f.y + 108))[0] + 1][
+                                              f.check_coord((f.x - 60, f.y + 108))[
+                                                  1]]) == 1 and f.y < 430 and (len(
+                    board.board[
+                        f.check_coord((f.x - 30, f.y + 138))[0] + 1][
+                        f.check_coord((f.x - 30, f.y + 138))[
+                            1] + 1]) == 1)):
+                    f.x -= 30
+            elif event.key == pygame.K_DOWN:
+                if f.y + 30 < 480 and len(
+                        board.board[f.check_coord((f.x, f.y + 108 + 30))[0] + 1][
+                            f.check_coord((f.x, f.y + 108 + 30))[1]]) == 1:
+                    f.y += 30
+            elif event.key == pygame.K_SPACE:
+                z = self.func.index(f.glav)
+                if f.check_coord((f.x, f.y))[1] > 2:
+                    game1 = z
+                    if z == len(f.func) - 1:
+                        z = -1
+                        f.glav = f.func[0]
+                    else:
+                        f.glav = f.func[z + 1]
+                    q = f'f.{f.func[z + 1]}()'
 
     def first_check_position(self):
         if f.x + 60 < 570:
