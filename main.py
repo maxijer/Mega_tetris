@@ -164,7 +164,6 @@ class T:
         global q
         if position == 1:
             if event.type == pygame.KEYDOWN:
-                print(board.board)
                 if event.key == pygame.K_RIGHT:
                     if f.x + 60 <= 570 and (len(board.board[f.check_coord((f.x + 30, f.y + 30))[0] + 1][
                                                    f.check_coord((f.x + 30, f.y + 30))[
@@ -194,15 +193,18 @@ class T:
                                 f.check_coord((f.x, f.y + 108 + 30))[1]]) == 1:
                         f.y += 30
                 elif event.key == pygame.K_SPACE:
-                    z = f.func.index(f.glav)
-                    game1 = z
-                    if f.y != 30:
+                    z = self.func.index(f.glav)
+                    if f.check_coord((f.x, f.y))[1] > 2:
+                        game1 = z
                         if z == len(f.func) - 1:
                             z = -1
                             f.glav = f.func[0]
                         else:
                             f.glav = f.func[z + 1]
                         q = f'f.{f.func[z + 1]}()'
+        elif position == 2:
+            pass
+
 
     def first_check_position(self):
         if f.x + 60 < 570:
