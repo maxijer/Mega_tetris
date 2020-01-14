@@ -509,7 +509,6 @@ while running:
         f.y += 30
         exec(q)
         clock.tick(5)
-        board.render()
         pygame.display.flip()
     else:
         go_flag = True
