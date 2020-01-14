@@ -263,17 +263,18 @@ class T:
                         board.board[
                             f.check_coord((f.x + 30, f.y + 108))[0] + 1][
                             f.check_coord((f.x + 30, f.y + 108))[
-                                1]]) == 1) and len(board.board[f.check_coord((f.x + 60, f.y + 78))[0] + 1]
-                                                   [f.check_coord((f.x + 60, f.y + 78))[1]]) == 1):
+                                1]]) == 1) and len(
+                        board.board[f.check_coord((f.x + 60, f.y + 78))[0] + 1]
+                        [f.check_coord((f.x + 60, f.y + 78))[1]]) == 1):
                         f.x += 30
                 elif event.key == pygame.K_LEFT:
                     if f.x - 60 > 10 and (f.y < 430 and (len(
                             board.board[
-                                f.check_coord((f.x - 30, f.y + 138))[0] + 1][
-                                f.check_coord((f.x - 30, f.y + 138))[
-                                    1] + 1]) == 1) and
-                                          board.board[f.check_coord((f.x - 30, f.y))[0] + 1][
-                                              f.check_coord((f.x - 30, f.y))[1]] and
+                                f.check_coord((f.x - 30, f.y + 108))[0] + 1][
+                                f.check_coord((f.x - 30, f.y + 108))[
+                                    1]]) == 1) and
+                                          board.board[f.check_coord((f.x - 30, f.y + 30))[0] + 1][
+                                              f.check_coord((f.x - 30, f.y + 30))[1]] and
                                           board.board[f.check_coord((f.x - 30, f.y + 48))[0] + 1][
                                               f.check_coord((f.x - 30, f.y + 48))[1]] and len(
                                 board.board[f.check_coord((f.x - 30, f.y + 78))[0] + 1][
@@ -309,21 +310,31 @@ class T:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:  # готово
                     if f.x + 60 <= 570 and (
-                            len(board.board[f.check_coord((f.x + 60, f.y + 108))[0]][
-                                    f.check_coord((f.x + 60, f.y + 108))[
-                                        1]]) == 1):
+                            len(board.board[f.check_coord((f.x + 30, f.y + 48))[0]][
+                                    f.check_coord((f.x + 30, f.y + 48))[
+                                        1]]) == 1 and f.y <= 480 and len(
+                        board.board[f.check_coord((f.x + 30, f.y + 108))[0]][
+                            f.check_coord((f.x + 30, f.y + 108))[1]]) == 1 and (len(
+                        board.board[
+                            f.check_coord((f.x + 30, f.y + 78))[0]][
+                            f.check_coord((f.x + 30, f.y + 78))[
+                                1] + 1]) == 1)):
                         f.x += 30
                 elif event.key == pygame.K_LEFT:  # левая есть
-                    if f.x - 60 > 40 and f.y < 460 and (
-                            len(board.board[f.check_coord((f.x - 60, f.y + 108))[0] + 1][
-                                    f.check_coord((f.x - 60, f.y + 108))[
-                                        1]]) == 1 and f.y < 430 and (len(
+                    if f.x - 60 > 40 and f.y <= 480 and (
+                            len(board.board[f.check_coord((f.x - 30, f.y + 108))[0]][
+                                    f.check_coord((f.x - 30, f.y + 108))[
+                                        1]]) == 1 and f.y <= 480 and (len(
                         board.board[
-                            f.check_coord((f.x - 30, f.y + 78))[0] + 1][
+                            f.check_coord((f.x - 60, f.y))[0] - 1][
+                            f.check_coord((f.x - 60, f.y))[
+                                1]]) == 1) and len(
+                        board.board[f.check_coord((f.x, f.y + 48))[0] + 1][
+                            f.check_coord((f.x, f.y + 60))[1]]) and (len(
+                        board.board[
+                            f.check_coord((f.x - 30, f.y + 78))[0]][
                             f.check_coord((f.x - 30, f.y + 78))[
-                                1] + 1]) == 1) and len(
-                        board.board[f.check_coord((f.x, f.y + 60))[0] + 1][
-                            f.check_coord((f.x, f.y + 60))[1]])):
+                                1] + 1]) == 1)):
                         f.x -= 30
                         print(board.board)
                 elif event.key == pygame.K_DOWN:  # готов
@@ -333,23 +344,23 @@ class T:
                                                                                            f.check_coord(
                                                                                                (
                                                                                                        f.x - 30,
-                                                                                                       f.y + 138))[
+                                                                                                       f.y + 78))[
                                                                                                0] + 1][
                                                                                            f.check_coord(
                                                                                                (
                                                                                                        f.x - 30,
-                                                                                                       f.y + 138))[
+                                                                                                       f.y + 78))[
                                                                                                1]]) == 1 and len(
                         board.board[
                             f.check_coord(
                                 (
                                         f.x + 30,
-                                        f.y + 138))[
+                                        f.y + 78))[
                                 0] + 1][
                             f.check_coord(
                                 (
                                         f.x + 30,
-                                        f.y + 138))[
+                                        f.y + 78))[
                                 1]]) == 1:
                         f.y += 30
                 elif event.key == pygame.K_SPACE:
@@ -380,7 +391,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        print(game1)
+        print(board.board)
         f.game(game1)
 
     if f.flag:
