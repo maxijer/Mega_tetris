@@ -261,15 +261,10 @@ class T:
                                                     f.check_coord((f.x + 30, f.y + 30))[
                                                         1]]) == 1 and f.y < 430 and (len(
                         board.board[
-                            f.check_coord((f.x + 30, f.y + 138))[0]][
-                            f.check_coord((f.x + 30, f.y + 138))[
-                                1]]) == 1 and len(
-                        board.board[f.check_coord((f.x + 30, f.y + 30))[0] + 1][
-                            f.check_coord((f.x + 30, f.y + 30))[1]])) and len(
-                        board.board[f.check_coord((f.x + 60, f.y))[0] + 1][
-                            f.check_coord((f.x + 60, f.y))[
-                                1]]) == 1 and len(board.board[f.check_coord((f.x + 60, f.y + 138))[0]][
-                                                      f.check_coord((f.x + 60, f.y + 138))[1]]) == 1):
+                            f.check_coord((f.x + 30, f.y + 108))[0] + 1][
+                            f.check_coord((f.x + 30, f.y + 108))[
+                                1]]) == 1) and len(board.board[f.check_coord((f.x + 60, f.y + 78))[0] + 1]
+                                                   [f.check_coord((f.x + 60, f.y + 78))[1]]) == 1):
                         f.x += 30
                 elif event.key == pygame.K_LEFT:
                     if f.x - 60 > 10 and (f.y < 430 and (len(
