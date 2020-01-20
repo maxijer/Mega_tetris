@@ -514,3 +514,4 @@ while running:
         game1 = 1
         go_flag = False
     pygame.display.flip()
+
