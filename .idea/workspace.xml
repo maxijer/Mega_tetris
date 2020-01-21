@@ -4,12 +4,25 @@
     <list default="true" id="af62667e-48a4-4297-a58b-80a34272f382" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/UI.ui" beforeDir="false" afterPath="$PROJECT_DIR$/data/UI.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/redbrick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/tealbrick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/yellowbrick.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/norm.py" beforeDir="false" afterPath="$PROJECT_DIR$/norm.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,10 +44,10 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
-  <component name="RunManager" selected="Python.main">
-    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.1">
+    <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Tet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -42,12 +55,34 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/yandex-toDo" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/yandex-toDo/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="blend_fill" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Tet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/AppData/Local/Temp/Rar$DIa27036.30684" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/AppData/Local/Temp/Rar$DIa27036.30684/blend_fill.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -71,6 +106,50 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="norm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Tet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/norm.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="vgrade" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Tet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/AppData/Local/Temp/Rar$DIa27036.22909" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/AppData/Local/Temp/Rar$DIa27036.22909/vgrade.py" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -80,8 +159,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.1" />
+        <item itemvalue="Python.norm" />
+        <item itemvalue="Python.blend_fill" />
+        <item itemvalue="Python.vgrade" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.main (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -109,83 +191,143 @@
       <updated>1578688558097</updated>
       <workItem from="1578688560013" duration="404000" />
       <workItem from="1578689070966" duration="32523000" />
-      <workItem from="1578772562932" duration="55300000" />
+      <workItem from="1578772562932" duration="81426000" />
+      <workItem from="1579185964909" duration="5133000" />
+      <workItem from="1579195503596" duration="96615000" />
+      <workItem from="1579586194897" duration="162000" />
+      <workItem from="1579586472590" duration="25658000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1244" height="164" key="GridCell.Tab.0.bottom" timestamp="1578954983174">
+    <state x="422" y="185" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579606740073">
       <screen x="0" y="0" width="1300" height="768" />
     </state>
-    <state width="1244" height="164" key="GridCell.Tab.0.bottom/0.0.1300.768@0.0.1300.768" timestamp="1578954983174" />
+    <state x="422" y="185" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1300.768@0.0.1300.768" timestamp="1579606740073" />
+    <state x="493" y="255" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog" timestamp="1579453931370">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state x="493" y="255" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.0.1300.768@0.0.1300.768" timestamp="1579453931370" />
+    <state x="369" y="0" key="#main" timestamp="1579195463823">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state x="369" y="0" key="#main/0.0.1300.768@0.0.1300.768" timestamp="1579195463822" />
+    <state width="1089" height="466" key="DebuggerActiveHint" timestamp="1579605394678">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state width="1089" height="466" key="DebuggerActiveHint/0.0.1300.768@0.0.1300.768" timestamp="1579605394678" />
+    <state width="1240" height="186" key="GridCell.Tab.0.bottom" timestamp="1579612278429">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state width="1240" height="186" key="GridCell.Tab.0.bottom/0.0.1300.768@0.0.1300.768" timestamp="1579612278429" />
     <state width="1244" height="164" key="GridCell.Tab.0.bottom/0.0.1304.768@0.0.1304.768" timestamp="1578940965227" />
     <state width="1286" height="163" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1578750139854" />
-    <state width="1244" height="164" key="GridCell.Tab.0.center" timestamp="1578954983174">
+    <state width="1240" height="186" key="GridCell.Tab.0.center" timestamp="1579612278429">
       <screen x="0" y="0" width="1300" height="768" />
     </state>
-    <state width="1244" height="164" key="GridCell.Tab.0.center/0.0.1300.768@0.0.1300.768" timestamp="1578954983174" />
+    <state width="1240" height="186" key="GridCell.Tab.0.center/0.0.1300.768@0.0.1300.768" timestamp="1579612278429" />
     <state width="1244" height="164" key="GridCell.Tab.0.center/0.0.1304.768@0.0.1304.768" timestamp="1578940965227" />
     <state width="1286" height="163" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1578750139853" />
-    <state width="1244" height="164" key="GridCell.Tab.0.left" timestamp="1578954983173">
+    <state width="1240" height="186" key="GridCell.Tab.0.left" timestamp="1579612278428">
       <screen x="0" y="0" width="1300" height="768" />
     </state>
-    <state width="1244" height="164" key="GridCell.Tab.0.left/0.0.1300.768@0.0.1300.768" timestamp="1578954983173" />
+    <state width="1240" height="186" key="GridCell.Tab.0.left/0.0.1300.768@0.0.1300.768" timestamp="1579612278428" />
     <state width="1244" height="164" key="GridCell.Tab.0.left/0.0.1304.768@0.0.1304.768" timestamp="1578940965227" />
     <state width="1286" height="163" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1578750139853" />
-    <state width="1244" height="164" key="GridCell.Tab.0.right" timestamp="1578954983174">
+    <state width="1240" height="186" key="GridCell.Tab.0.right" timestamp="1579612278429">
       <screen x="0" y="0" width="1300" height="768" />
     </state>
-    <state width="1244" height="164" key="GridCell.Tab.0.right/0.0.1300.768@0.0.1300.768" timestamp="1578954983174" />
+    <state width="1240" height="186" key="GridCell.Tab.0.right/0.0.1300.768@0.0.1300.768" timestamp="1579612278429" />
     <state width="1244" height="164" key="GridCell.Tab.0.right/0.0.1304.768@0.0.1304.768" timestamp="1578940965227" />
     <state width="1286" height="163" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1578750139853" />
-    <state width="1244" height="204" key="GridCell.Tab.1.bottom" timestamp="1578951678389">
+    <state width="1240" height="231" key="GridCell.Tab.1.bottom" timestamp="1579611711756">
       <screen x="0" y="0" width="1300" height="768" />
     </state>
-    <state width="1244" height="204" key="GridCell.Tab.1.bottom/0.0.1300.768@0.0.1300.768" timestamp="1578951678389" />
+    <state width="1240" height="231" key="GridCell.Tab.1.bottom/0.0.1300.768@0.0.1300.768" timestamp="1579611711756" />
     <state width="1244" height="204" key="GridCell.Tab.1.bottom/0.0.1304.768@0.0.1304.768" timestamp="1578936489612" />
     <state width="1286" height="204" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1578744041128" />
-    <state width="1244" height="204" key="GridCell.Tab.1.center" timestamp="1578951678389">
+    <state width="1240" height="231" key="GridCell.Tab.1.center" timestamp="1579611711756">
       <screen x="0" y="0" width="1300" height="768" />
     </state>
-    <state width="1244" height="204" key="GridCell.Tab.1.center/0.0.1300.768@0.0.1300.768" timestamp="1578951678389" />
+    <state width="1240" height="231" key="GridCell.Tab.1.center/0.0.1300.768@0.0.1300.768" timestamp="1579611711756" />
     <state width="1244" height="204" key="GridCell.Tab.1.center/0.0.1304.768@0.0.1304.768" timestamp="1578936489612" />
     <state width="1286" height="204" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1578744041128" />
-    <state width="1244" height="204" key="GridCell.Tab.1.left" timestamp="1578951678389">
+    <state width="1240" height="231" key="GridCell.Tab.1.left" timestamp="1579611711756">
       <screen x="0" y="0" width="1300" height="768" />
     </state>
-    <state width="1244" height="204" key="GridCell.Tab.1.left/0.0.1300.768@0.0.1300.768" timestamp="1578951678389" />
+    <state width="1240" height="231" key="GridCell.Tab.1.left/0.0.1300.768@0.0.1300.768" timestamp="1579611711756" />
     <state width="1244" height="204" key="GridCell.Tab.1.left/0.0.1304.768@0.0.1304.768" timestamp="1578936489612" />
     <state width="1286" height="204" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1578744041128" />
-    <state width="1244" height="204" key="GridCell.Tab.1.right" timestamp="1578951678389">
+    <state width="1240" height="231" key="GridCell.Tab.1.right" timestamp="1579611711756">
       <screen x="0" y="0" width="1300" height="768" />
     </state>
-    <state width="1244" height="204" key="GridCell.Tab.1.right/0.0.1300.768@0.0.1300.768" timestamp="1578951678389" />
+    <state width="1240" height="231" key="GridCell.Tab.1.right/0.0.1300.768@0.0.1300.768" timestamp="1579611711756" />
     <state width="1244" height="204" key="GridCell.Tab.1.right/0.0.1304.768@0.0.1304.768" timestamp="1578936489612" />
     <state width="1286" height="204" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1578744041128" />
-    <state x="184" y="8" key="SettingsEditor" timestamp="1578688599413">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1578688599413" />
-    <state width="652" height="344" key="XDebugger.FullValuePopup" timestamp="1578843359830">
-      <screen x="0" y="0" width="1304" height="768" />
-    </state>
-    <state width="652" height="344" key="XDebugger.FullValuePopup/0.0.1304.768@0.0.1304.768" timestamp="1578843359830" />
-    <state x="105" y="127" width="1091" height="515" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578952496106">
+    <state x="175" y="8" key="SettingsEditor" timestamp="1579371718478">
       <screen x="0" y="0" width="1300" height="768" />
     </state>
-    <state x="105" y="127" width="1091" height="515" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1300.768@0.0.1300.768" timestamp="1578952496106" />
+    <state x="175" y="8" key="SettingsEditor/0.0.1300.768@0.0.1300.768" timestamp="1579371718477" />
+    <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1578688599413" />
+    <state x="242" y="98" key="Vcs.Push.Dialog.v2" timestamp="1579546483328">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state x="242" y="98" key="Vcs.Push.Dialog.v2/0.0.1300.768@0.0.1300.768" timestamp="1579546483328" />
+    <state width="651" height="344" key="XDebugger.FullValuePopup" timestamp="1579552186095">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state width="651" height="344" key="XDebugger.FullValuePopup/0.0.1300.768@0.0.1300.768" timestamp="1579552186095" />
+    <state width="652" height="344" key="XDebugger.FullValuePopup/0.0.1304.768@0.0.1304.768" timestamp="1578843359830" />
+    <state x="105" y="127" width="1091" height="515" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579604185529">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state x="105" y="127" width="1091" height="515" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1300.768@0.0.1300.768" timestamp="1579604185529" />
     <state x="105" y="127" width="1094" height="515" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1304.768@0.0.1304.768" timestamp="1578845383458" />
     <state x="110" y="120" width="1146" height="488" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1578749250780" />
+    <state x="346" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1579195506492">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state x="346" y="189" key="com.intellij.ide.util.TipDialog/0.0.1300.768@0.0.1300.768" timestamp="1579195506492" />
     <state x="213" y="101" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1578770891101">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
     <state x="213" y="101" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1304.768@0.0.1304.768" timestamp="1578770891101" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1579544504729">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.0.1300.768@0.0.1300.768" timestamp="1579544504729" />
+    <state x="318" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1579544477340">
+      <screen x="0" y="0" width="1300" height="768" />
+    </state>
+    <state x="318" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1300.768@0.0.1300.768" timestamp="1579544477340" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Tet$vgrade.coverage" NAME="vgrade Coverage Results" MODIFIED="1579584738899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/AppData/Local/Temp/Rar$DIa27036.22909" />
+    <SUITE FILE_PATH="coverage/Tet$blend_fill.coverage" NAME="blend_fill Coverage Results" MODIFIED="1579586653376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/AppData/Local/Temp/Rar$DIa27036.30684" />
+    <SUITE FILE_PATH="coverage/Tet$tetris.coverage" NAME="tetris Coverage Results" MODIFIED="1579555960341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pygame-tetris" />
     <SUITE FILE_PATH="coverage/Tet$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1578756384504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/yandex-toDo" />
-    <SUITE FILE_PATH="coverage/Tet$main.coverage" NAME="main Coverage Results" MODIFIED="1578954983166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tet$norm.coverage" NAME="norm Coverage Results" MODIFIED="1579612267930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tet$final.coverage" NAME="final Coverage Results" MODIFIED="1579547858895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tet$1.coverage" NAME="1 Coverage Results" MODIFIED="1579612278404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tet$zaichik.coverage" NAME="zaichik Coverage Results" MODIFIED="1579206793402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tet$main.coverage" NAME="main Coverage Results" MODIFIED="1579578769883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tet$21.coverage" NAME="21 Coverage Results" MODIFIED="1579555744087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tet$2.coverage" NAME="2 Coverage Results" MODIFIED="1579204514348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -19,7 +19,7 @@
      <x>20</x>
      <y>180</y>
      <width>381</width>
-     <height>301</height>
+     <height>331</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -33,19 +33,6 @@
       </property>
       <property name="text">
        <string>Играть</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Выбрвть уровень</string>
       </property>
      </widget>
     </item>

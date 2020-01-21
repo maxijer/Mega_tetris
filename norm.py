@@ -6,7 +6,16 @@ pygame.init()
 
 width, height = (700, 700)
 size = width, height
-fps = 5
+my_file = open("some.txt", "r")
+d = my_file.read()
+if d == '1':
+    fps = 5
+elif d == '2':
+    fps = 15
+elif d == '3':
+    fps = 30
+pygame.mixer.music.load('Tetris.mp3')
+pygame.mixer.music.play()
 # screen — холст, на котором нужно рисовать:
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
@@ -42,7 +51,7 @@ def check():
 
 
 def game_over():
-    for i in board.board[5]:
+    for i in board.board[3]:
         if i != '0':
             return True
     return False
@@ -437,7 +446,7 @@ def move(f, hod):
                 board.board[f.krai_right[0] + 1][f.krai_right[1] - 1] == '0' and f.y < 500:
             return True
     elif hod == 'right':
-        if f.krai_right[1] <= 18 and f.y < 470 and board.board[
+        if f.krai_right[1] <= 18 and f.krai_right[0] <= 18 and f.y < 470 and board.board[
             f.krai_left[0]][f.krai_left[1] + 1] == '0' and board.board[f.krai_down[0]][
             f.krai_down[1] + 1] == '0' and \
                 board.board[f.krai_up[0]][f.krai_up[1] + 1] == '0' and \

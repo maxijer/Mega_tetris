@@ -101,19 +101,6 @@ class Board:
     def setShapeAt(self, x, y, shape):
         self.board[(y * Board.BoardWidth) + x] = shape
 
-    def newPiece(self):
-
-        self.curPiece = Figura()
-        self.curPiece.setRandomShape()
-        self.curX = Board.BoardWidth // 2 + 1
-        self.curY = Board.BoardHeight - 1 + self.curPiece.minY()
-
-        if not self.tryMove(self.curPiece, self.curX, self.curY):
-            self.curPiece.setShape(Name.NoShape)
-            self.timer.stop()
-            self.isStarted = False
-            self.msg2Statusbar.emit("Game over")
-
     def tryMove(self, newPiece, newX, newY):
 
         for i in range(4):
@@ -145,8 +132,8 @@ class Board:
 
                 if shape != Name.NoShape:
                     self.drawSquare(
-                        j * 18,
-                        boardTop + i * 16, shape)
+                                    j * 18,
+                                    boardTop + i * 16, shape)
 
         if self.curPiece.shape() != Name.NoShape:
 
@@ -156,6 +143,8 @@ class Board:
                 self.drawSquare(x * 18,
                                 boardTop + (Board.BoardHeight - y - 1) * 16,
                                 self.curPiece.shape())
+
+
 
 
 a = Board()
