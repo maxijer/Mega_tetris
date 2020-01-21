@@ -4,8 +4,6 @@ import random
 
 pygame.init()
 
-pygame.joystick.init()
-
 width, height = (700, 700)
 size = width, height
 # screen — холст, на котором нужно рисовать:
@@ -69,7 +67,6 @@ class O:
         self.chast = list()
         self.x = 210
         self.y = 0
-        self.pos = [1, 2, 3, 4]
         self.glav = 'create_shape'
         self.func = ['create_shape']
         self.flag = True
@@ -81,10 +78,10 @@ class O:
             self.z = load_image('tetris.png', -1)
 
     def create_shape(self):
-        first_coord = (self.x, self.y + 78)
-        second_coord = (self.x, self.y + 48)
+        first_coord = (self.x, self.y + 48)
+        second_coord = (self.x, self.y + 78)
         three_cord = (self.x + 30, self.y + 48)
-        four_coord = (self.x + 60, self.y + 48)
+        four_coord = (self.x + 30, self.y + 78)
         self.master_shape(first_coord, second_coord, three_cord, four_coord, 1)
 
     def master_shape(self, first_coord, second_coord, three_coord,
@@ -174,7 +171,7 @@ class S:
         self.chast = list()
         self.x = 210
         self.y = 0
-        self.pos = [1, 2, 3, 4]
+        self.pos = [1, 2]
         self.glav = 'create_shape'
         self.func = ['create_shape']
         self.flag = True
@@ -254,6 +251,9 @@ class S:
     def add_in_board(self, coord, vse):
         board.board[coord[0]][coord[1]] = (vse, self.color)
 
+    def pos(self):
+        return self.pos
+
     def game(self, position):
         global q
         if event.type == pygame.KEYDOWN:
@@ -291,111 +291,6 @@ def move(f, hod):
     return False
 
 
-class I:
-    def __init__(self):
-        global board, game1
-        self.chast = list()
-        self.x = 210
-        self.y = 0
-        self.pos = [1, 2]
-        self.glav = 'create_shape'
-        self.func = ['create_shape', 'second']
-        self.flag = True
-        color = random.choice(['red', 'blue'])
-        self.color = color
-        if color == 'red':
-            self.z = load_image('red.png', -1)
-        else:
-            self.z = load_image('tetris.png', -1)
-
-    def create_shape(self):
-        first_coord = (self.x, self.y + 48)
-        second_coord = (self.x, self.y + 78)
-        three_cord = (self.x, self.y + 108)
-        four_coord = (self.x, self.y + 138)
-        self.master_shape(first_coord, second_coord, three_cord, four_coord, 1)
-
-    def master_shape(self, first_coord, second_coord, three_coord,
-                     four_coord, shape):  # оптимизация и расстановка фигур
-        self.krai_up = self.check_coord(first_coord)
-        self.krai_right = self.check_coord(second_coord)
-        self.krai_left = self.check_coord(three_coord)
-        self.krai_down = self.check_coord(four_coord)
-        screen.blit(self.z, first_coord)
-        screen.blit(self.z, second_coord)
-        screen.blit(self.z, three_coord)
-        screen.blit(self.z, four_coord)
-        if shape == 1:
-            if self.krai_down[0] == 19 or board.board[self.krai_down[0] + 1][self.krai_down[1]] != '0':
-                self.no_problen(self.krai_up, first_coord, self.krai_right, second_coord,
-                                self.krai_left,
-                                three_coord, self.krai_down,
-                                four_coord)
-
-    def no_problen(self, fir, first_coord, sec, second_coord, three,
-                   three_coord, four,
-                   four_coord):  # добавление на доску , сокращение copy paste
-        self.add_in_board(fir, first_coord)
-        self.add_in_board(sec, second_coord)
-        self.flag = False
-        self.add_in_board(three, three_coord)
-        self.add_in_board(four, four_coord)
-
-    def check_coord(self, coord):
-        f = board.get_cell((coord[0], coord[1]))
-        return f
-
-    def add_in_board(self, coord, vse):
-        board.board[coord[0]][coord[1]] = (vse, self.color)
-
-    def second(self):
-        first_coord = (self.x + 30, self.y + 48)
-        second_coord = (self.x + 60, self.y + 48)
-        three_cord = (self.x + 90, self.y + 48)
-        four_coord = (self.x + 120, self.y + 48)
-        self.master_shape(first_coord, second_coord, three_cord, four_coord, 2)
-
-    def game(self, position):
-        global q
-        if position == 1:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    if move(f, 'left'):
-                        f.x -= 30
-                elif event.key == pygame.K_RIGHT:
-                    if move(f, 'right'):
-                        f.x += 30
-                elif event.key == pygame.K_DOWN:
-                    if move(f, 'down'):
-                        f.y += 30
-        elif position == 2:
-            fir = self.check_coord((f.x, f.y + 48))
-            sec = self.check_coord((f.x, self.y + 78))
-            three = self.check_coord((f.x, self.y + 108))
-            four = self.check_coord((f.x, self.y + 138))
-            print(board.board)
-            global game1
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
-                    if four[1] + 1 <= 19 and board.board[four[0]][four[1] + 1] == '0' and f.y < 430 and \
-                            board.board[four[0] + 1][four[1] + 1] == '0':
-                        f.x += 30
-                elif event.key == pygame.K_LEFT:
-                    if fir[1] - 1 >= 2 and board.board[four[0]][four[1] - 1] == '0' and f.y <= 430 and \
-                            board.board[four[0] + 1][four[1] - 1] == '0':
-                        f.x -= 30
-                elif event.key == pygame.K_DOWN:
-                    if f.y + 138 < 480 and board.board[four[0] + 2][four[1]] == '0':
-                        f.y += 30
-                elif event.key == pygame.K_SPACE:
-                    z = self.func.index(f.glav)
-                    if board.board[sec[0]][sec[1] + 1] == '0' and board.board[sec[0]][sec[1] + 2] and \
-                            board.board[sec[0]][sec[1] + 3] and board.board[sec[0]][sec[1] + 2]:
-                        f.glav = f.func[0]
-                        game1 = 2
-                        f.glav = f.func[z + 1]
-                    q = f'f.{f.func[z + 1]}()'
-
 
 class T:
     def __init__(self):
@@ -422,6 +317,9 @@ class T:
         four_coord = (self.x + 30, self.y + 78)
         self.master_shape(first_coord, second_coord, three_cord, four_coord,
                           1)
+
+    def pos(self):
+        return self.pos
 
     def master_shape(self, first_coord, second_coord, three_coord,
                      four_coord, shape):  # оптимизация и расстановка фигур
@@ -613,12 +511,27 @@ class T:
                             f.x -= 30
 
 
+def generate(ob):
+    global game1
+    if ob == 'T':
+        game1 = random.choice([1, 2, 3, 4])
+    elif ob == 'O':
+        game1 = 1
+    elif ob == 'S':
+        game1 = random.choice([1, 2])
+    elif ob == 'I':
+        game1 = random.choice([1, 2])
+
+
+al = [(T(), 'T'), (O(), 'O'), (S(), 'S')]
 running = True
-f = S()
-game1 = 2
-glav = ''
+glav = ['create_shape', 'second', 'three', 'four']
+f = random.choices(al)
 go_flag = False
-q = 'f.second()'
+generate(f[0][1])
+su = glav[game1 - 1]
+f = f[0][0]
+q = f'f.{su}()'
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -649,6 +562,12 @@ while running:
     else:
         go_flag = True
     if go_flag:
-        f = S()
+        al = [(T(), 'T'), (O(), 'O'), (S(), 'S')]
+        f = random.choice(al)
+        print(f)
         go_flag = False
+        generate(f[1])
+        su = glav[game1 - 1]
+        f = f[0]
+    q = f'f.{su}()'
     pygame.display.flip()
